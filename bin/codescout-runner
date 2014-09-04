@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path(File.dirname(__FILE__) + "/../lib")
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+require "rubygems"
+require "codescout/runner"
+
+if ENV["CODESCOUT_URL"].nil?
+  STDERR.puts "CODESCOUT_URL is required"
+  exit 1
+end
+
+if ENV["CODESCOUT_PUSH"].nil?
+  STDERR.puts "CODESCOUT_PUSH is required"
+  exit 1
+end
+
+Codescout::Runner.perform(ENV["CODESCOUT_URL"], ENV["CODESCOUT_PUSH"])
