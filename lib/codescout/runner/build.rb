@@ -33,10 +33,7 @@ module Codescout::Runner
       # No need to install ssh keys for public repos
       return unless @push.repository =~ /git@/
 
-      path = ENV["HOME"]
-
-      File.open("#{path}/.ssh/id_rsa", "w") { |f| f.write(@push.public_key) }
-      File.open("#{path}/.ssh/id_rsa.pub", "w") { |f| f.write(@push.private_key) }
+      Codescout::Runner::Key.new(@push.public_key, @push.private_key).install
     end
 
     def clone_path

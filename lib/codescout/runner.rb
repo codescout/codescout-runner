@@ -1,6 +1,7 @@
 require "codescout/runner/version"
 require "codescout/runner/shell"
 require "codescout/runner/client"
+require "codescout/runner/key"
 require "codescout/runner/build"
 
 module Codescout
