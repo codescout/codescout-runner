@@ -21,10 +21,11 @@ module Codescout::Runner
     end
 
     def public_key_path
-      File.join(home_path, ".ssh/id_rsa.pub"
+      File.join(home_path, ".ssh/id_rsa.pub")
     end
 
     def write(path, content)
       File.open(path, "w") { |f| f.write(content) }
     end
   end
+end
