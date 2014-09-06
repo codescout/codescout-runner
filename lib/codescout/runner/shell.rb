@@ -1,9 +1,8 @@
 module Codescout::Runner
-  module Shell
-    def shell(command)
-      # TODO: Replace backtick with proper shell execution.
-      # Maybe use posix/spawn.
+  class Shell
+    def execute(command)
       `#{command}`
+      $?.success?
     end
   end
 end

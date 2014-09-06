@@ -10,9 +10,19 @@ module Codescout::Runner
 
     def fetch_push(token)
       response = connection.get("/worker/push/#{token}")
-      json     = JSON.load(response.body)
+      json = JSON.load(response.body)
+      obj = Hashie::Mash.new(json)
 
-      Hashie::Mash.new(json)
+      if obj.error
+        raise Codescout::Runner::ClientError, obj.error
+      end
+
+      obj
+
+    rescue JSON::ParserError => err
+      raise Codescout::Runner::ClientError, err.message
+    rescue Faraday::ConnectionFailed => err
+      raise Codescout::Runner::ClientError, err.message
     end
 
     def send_payload(token, payload)
@@ -20,8 +30,6 @@ module Codescout::Runner
         c.headers["Content-Type"] = "text/plain"
       end
     end
-
-    private
 
     def connection
       @connection ||= Faraday.new(@url) do |c|

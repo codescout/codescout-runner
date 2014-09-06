@@ -6,11 +6,17 @@ module Codescout::Runner
     end
 
     def install
+      return if keys_installed?
+
       write(private_key_path, @private_key)
       write(public_key_path, @public_key)
     end
 
     private
+
+    def keys_installed?
+      installed?(private_key_path) && installed?(public_key_path)
+    end
 
     def home_path
       ENV["HOME"]
@@ -26,6 +32,10 @@ module Codescout::Runner
 
     def write(path, content)
       File.open(path, "w") { |f| f.write(content) }
+    end
+
+    def installed?(path)
+      File.exists?(path) && File.size(path) > 0
     end
   end
 end

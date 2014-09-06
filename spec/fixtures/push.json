@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/foo/bar.git",
+  "branch": "master",
+  "commit": "master",
+  "private_key": "private",
+  "public_key": "public"
+}

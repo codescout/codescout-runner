@@ -1,4 +1,5 @@
 require "codescout/runner/version"
+require "codescout/runner/errors"
 require "codescout/runner/shell"
 require "codescout/runner/client"
 require "codescout/runner/key"
