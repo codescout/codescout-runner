@@ -16,6 +16,7 @@ module Codescout::Runner
       fetch_push
       setup_ssh_keys
       clone_repository
+      checkout_commit
       generate_report
       submit_report
     end
@@ -38,10 +39,11 @@ module Codescout::Runner
     end
     
     def clone_repository
-      branch = push.branch
-      repo   = push.repository
+      options = "--depth 50 --branch #{push.branch}"
+      shell("git clone #{options} #{push.repository} #{clone_path}")
+    end
 
-      shell("git clone --depth 50 --branch #{branch} #{repo} #{clone_path}")
+    def checkout_commit
       shell("cd #{clone_path} && git checkout -f #{push.commit}")
     end
 
