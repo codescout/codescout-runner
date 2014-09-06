@@ -6,8 +6,8 @@ module Codescout::Runner
     end
 
     def install
-      write(@private_key, private_key_path)
-      write(@public_key, public_key_path)
+      write(private_key_path, @private_key)
+      write(public_key_path, @public_key)
     end
 
     private
