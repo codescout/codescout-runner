@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.add_dependency "json",               "~> 1.8"
   s.add_dependency "hashie",             "~> 3.3"
   s.add_dependency "faraday",            "~> 0.9"
-  s.add_dependency "codescout-analyzer", "0.0.1"
+  s.add_dependency "codescout-analyzer"
 
   s.add_development_dependency "rake",      "~> 10"
   s.add_development_dependency "rspec",     "~> 3.0"
