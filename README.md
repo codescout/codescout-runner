@@ -1,6 +1,6 @@
 # codescout-runner
 
-Executes project code analysis and submit result to Code Scout
+Application to generate code analysis reports and submit to Code Scout.
 
 ## Overview
 
