@@ -1,9 +1,5 @@
 # codescout-runner
 
-Application to generate code analysis reports and submit to Code Scout.
-
-## Overview
-
 This project is one of the components used by Code Scout to initialize and execute code
 analysis reports. It does not generate reports by itself but provides an environment that's
 ready for further code examination by [codescout-analyzer](https://github.com/codescout/codescout-analyzer). Runner application is designed to be executed inside a Docker container, which 
